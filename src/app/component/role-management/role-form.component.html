@@ -1,0 +1,27 @@
+<h2>{{ role ? 'Edit Role' : 'Add Role' }}</h2>
+<form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Role Name:</label>
+    <input id="name" formControlName="name" />
+    <div *ngIf="roleForm.get('name')?.invalid && roleForm.get('name')?.touched">
+      <small *ngIf="roleForm.get('name')?.errors?.['required']">Role name is required.</small>
+      <small *ngIf="roleForm.get('name')?.errors?.['minlength']">
+        Role name must be at least 3 characters long.
+      </small>
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div *ngIf="roleForm.get('description')?.invalid && roleForm.get('description')?.touched">
+      <small *ngIf="roleForm.get('description')?.errors?.['required']">Description is required.</small>
+      <small *ngIf="roleForm.get('description')?.errors?.['minlength']">
+        Description must be at least 10 characters long.
+      </small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="roleForm.invalid">Save</button>
+  <button type="button" (click)="onCancel()">Cancel</button>
+</form>
