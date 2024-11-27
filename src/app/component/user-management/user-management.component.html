@@ -1,0 +1,27 @@
+<h1>User Management</h1>
+
+<!-- User List -->
+<h2>User List</h2>
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.name }} ({{ user.email }})
+    <button (click)="selectUser(user)">Edit</button>
+    <button (click)="deleteUser(user.id)">Delete</button>
+  </li>
+</ul>
+
+<!-- Add/Edit User Form -->
+<h2>{{ selectedUser ? 'Edit User' : 'Add User' }}</h2>
+<form #userForm="ngForm" (ngSubmit)="selectedUser ? editUser(userForm.value) : addUser(userForm.value)">
+  <input *ngIf="selectedUser" type="hidden" [value]="selectedUser.id" name="id" ngModel />
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" name="name" [(ngModel)]="selectedUser?.name" required />
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" name="email" [(ngModel)]="selectedUser?.email" required email />
+  </div>
+  <button type="submit">{{ selectedUser ? 'Update' : 'Add' }}</button>
+  <button type="button" (click)="clearSelection()" *ngIf="selectedUser">Cancel</button>
+</form>
