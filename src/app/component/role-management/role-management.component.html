@@ -1,0 +1,21 @@
+<h1>Role Management</h1>
+
+<!-- Role List -->
+<h2>Roles</h2>
+<ul>
+  <li *ngFor="let role of roles">
+    {{ role.name }}: {{ role.description }}
+    <button (click)="editRole(role)">Edit</button>
+    <button (click)="deleteRole(role.id)">Delete</button>
+  </li>
+</ul>
+<button (click)="addRole()">Add New Role</button>
+
+<!-- Role Form -->
+<div *ngIf="isFormVisible">
+  <app-role-form
+    [role]="selectedRole"
+    (saveRole)="saveRole($event)"
+    (cancel)="cancelForm()"
+  ></app-role-form>
+</div>
