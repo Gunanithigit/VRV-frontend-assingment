@@ -1,0 +1,44 @@
+h1, h2 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:nth-child(2) {
+  background-color: #d9534f;
+  color: white;
+}
+
+button:nth-child(2):hover {
+  background-color: #c9302c;
+}
+
+button:nth-child(1) {
+  background-color: #0275d8;
+  color: white;
+}
+
+button:nth-child(1):hover {
+  background-color: #025aa5;
+}
+
+div {
+  margin-top: 20px;
+}
